@@ -1,4 +1,4 @@
-package com.martin.spring.model;
+package com.joevmartin.spring.model;
 
 public class Owner extends Person {
 }
