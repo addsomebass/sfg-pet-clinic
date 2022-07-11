@@ -1,9 +1,8 @@
 package com.joevmartin.spring.services.map;
 
 import com.joevmartin.spring.model.Owner;
-import com.joevmartin.spring.services.CrudService;
+import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
+@Service
 public class OwnerServiceMap extends BaseEntityServiceMap<Owner> {
 }
