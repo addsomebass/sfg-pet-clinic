@@ -2,12 +2,14 @@ package com.joevmartin.spring.services.map;
 
 import com.joevmartin.spring.model.Vet;
 import com.joevmartin.spring.services.CrudService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+@Service
+public class VetServiceMap extends BaseEntityServiceMap<Vet> {
 
-	@Override
+	/*@Override
 	public Vet findById( Long aLong ) {
 		return super.findById( aLong );
 	}
@@ -30,6 +32,6 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements Crud
 	@Override
 	public void deleteById( Long aLong ) {
 		super.deleteById( aLong );
-	}
+	}*/
 
 }
