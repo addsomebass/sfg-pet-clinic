@@ -2,12 +2,13 @@ package com.joevmartin.spring.services.map;
 
 import com.joevmartin.spring.model.Vet;
 import com.joevmartin.spring.services.CrudService;
+import com.joevmartin.spring.services.VetService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class VetServiceMap extends BaseEntityServiceMap<Vet> {
+public class VetServiceMap extends BaseEntityServiceMap<Vet> implements VetService {
 
 	/*@Override
 	public Vet findById( Long aLong ) {
