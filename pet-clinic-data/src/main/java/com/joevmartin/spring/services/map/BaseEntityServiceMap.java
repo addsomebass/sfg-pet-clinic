@@ -13,7 +13,7 @@ public class BaseEntityServiceMap<T extends BaseEntity> extends AbstractMapServi
 
 	@Override
 	public T save( T model ) {
-		return super.save( model.getId(), model );
+		return super.save( model );
 	}
 
 	@Override

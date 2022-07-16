@@ -5,8 +5,32 @@
 	<title>Pet List</title>
 </head>
 <body>
+<!--/*@thymesVar id="pet" type="com.joevmartin.spring.model.Pet"*/-->
 
 <h1 th:text="'List of Pets'"></h1>
+
+<table>
+	<thead>
+	<tr>
+		<td>Id</td>
+		<td>Birthdate</td>
+		<td>Owner First Name</td>
+		<td>Type</td>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="pet : ${pets}">
+		<td th:text="${pet.id}"></td>
+		<td th:text="${pet.birthdate}"></td>
+		<td th:text="${pet.getOwner().getFirstName()}"></td>
+		<td th:text="${pet.getPetType().getName()}"></td>
+
+
+	</tr>
+	</tbody>
+</table>
+
+
 
 </body>
 </html>
