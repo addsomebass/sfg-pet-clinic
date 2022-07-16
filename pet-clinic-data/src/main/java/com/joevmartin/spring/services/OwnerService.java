@@ -2,9 +2,5 @@ package com.joevmartin.spring.services;
 
 import com.joevmartin.spring.model.Owner;
 
-import java.util.Set;
-
-public interface OwnerService extends CrudService<Owner, Long> {
-
-	Owner findByLastName(String lastName);
+public interface OwnerService extends PersonService<Owner>{
 }

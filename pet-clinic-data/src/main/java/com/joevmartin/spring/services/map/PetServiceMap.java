@@ -1,36 +1,10 @@
 package com.joevmartin.spring.services.map;
 
-import com.joevmartin.spring.model.Owner;
 import com.joevmartin.spring.model.Pet;
-import com.joevmartin.spring.services.CrudService;
+import com.joevmartin.spring.services.PetService;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
 @Service
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
-	@Override
-	public Pet findById( Long aLong ) {
-		return super.findById( aLong );
-	}
+public class PetServiceMap extends BaseEntityServiceMap<Pet> implements PetService {
 
-	@Override
-	public Pet save( Pet model ) {
-		return super.save( model.getId(), model );
-	}
-
-	@Override
-	public Set<Pet> findAll() {
-		return super.findAll();
-	}
-
-	@Override
-	public void delete( Pet object ) {
-		super.delete( object );
-	}
-
-	@Override
-	public void deleteById( Long aLong ) {
-		super.deleteById( aLong );
-	}
 }
