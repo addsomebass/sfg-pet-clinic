@@ -1,16 +1,16 @@
 package com.joevmartin.spring.model;
 
-import java.util.List;
+import java.util.Set;
 
 public class Owner extends Person {
 
-	private List<Pet> pets;
+	private Set<Pet> pets;
 
-	public List<Pet> getPets() {
+	public Set<Pet> getPets() {
 		return pets;
 	}
 
-	public void setPets( List<Pet> pets ) {
+	public void setPets( Set<Pet> pets ) {
 		this.pets = pets;
 	}
 }
