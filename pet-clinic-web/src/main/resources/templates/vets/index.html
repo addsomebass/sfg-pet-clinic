@@ -6,22 +6,22 @@
 </head>
 <body>
 
+<!--/*@thymesVar id="vet" type="com.joevmartin.spring.model.Vet"*/-->
+
 <h1 th:text="'List of Vets'"></h1>
 
 <table id="vets" class="table table-striped">
 	<thead>
 	<tr>
 		<th style="width: 150px;">Name</th>
-		<th style="width: 200px;">Address</th>
-		<th>City</th>
-		<th style="width: 120px;">Telephone</th>
+		<th style="width: 200px;">Specialties</th>
 	</tr>
 	</thead>
 	<tbody>
 	<tr th:each="vet : ${vets}">
-		<td th:text="${vet.id}"></td>
-		<td th:text="${vet.firstName}"></td>
-		<td th:text="${vet.lastName}"></td>
+		<td th:text="${vet.getFirstName() + ' ' + vet.getLastName()}"></td>
+		<td th:text="${'Everything'}"></td>
+
 	</tr>
 	</tbody>
 </table>
