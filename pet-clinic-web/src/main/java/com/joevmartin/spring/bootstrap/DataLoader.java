@@ -1,13 +1,7 @@
 package com.joevmartin.spring.bootstrap;
 
-import com.joevmartin.spring.model.Owner;
-import com.joevmartin.spring.model.Pet;
-import com.joevmartin.spring.model.PetType;
-import com.joevmartin.spring.model.Vet;
-import com.joevmartin.spring.services.OwnerService;
-import com.joevmartin.spring.services.PetService;
-import com.joevmartin.spring.services.PetTypeService;
-import com.joevmartin.spring.services.VetService;
+import com.joevmartin.spring.model.*;
+import com.joevmartin.spring.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -20,17 +14,49 @@ public class DataLoader  implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetService petService;
 	private final PetTypeService petTypeService;
+	private final SpecialtyService specialtyService;
 
-	public DataLoader( OwnerService ownerService, VetService vetService, PetService petService, PetTypeService petTypeService ) {
+	public DataLoader( OwnerService ownerService, VetService vetService, PetService petService, PetTypeService petTypeService, SpecialtyService specialtyService ) {
 
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petService = petService;
 		this.petTypeService = petTypeService;
+		this.specialtyService = specialtyService;
 	}
 
 	@Override
 	public void run( String... args ) throws Exception {
+
+		final int count = petTypeService.findAll().size();
+
+		if ( count == 0 ) {
+			loadData();
+		}
+
+	}
+
+	private void loadData() {
+		final Specialty radiology;
+		{
+			final Specialty temp = new Specialty();
+			temp.setDescription( "Radiology" );
+			radiology = specialtyService.save( temp );
+		}
+
+		final Specialty surgery;
+		{
+			final Specialty temp = new Specialty();
+			temp.setDescription( "Surgery" );
+			surgery = specialtyService.save( temp );
+		}
+
+		final Specialty Dentistry;
+		{
+			final Specialty temp = new Specialty();
+			temp.setDescription( "Dentistry" );
+			Dentistry = specialtyService.save( temp );
+		}
 
 		final PetType ferretType;
 		{
@@ -71,6 +97,7 @@ public class DataLoader  implements CommandLineRunner {
 			final Vet vet = new Vet();
 			vet.setFirstName( "Ellie" );
 			vet.setLastName( "Belly" );
+			vet.getSpecialties().add( radiology );
 			EllieVet = vetService.save( vet );
 		}
 
@@ -79,6 +106,7 @@ public class DataLoader  implements CommandLineRunner {
 			final Vet vet = new Vet();
 			vet.setFirstName( "Fenny" );
 			vet.setLastName( "Bo-Benny" );
+			vet.getSpecialties().add( surgery );
 			FennyVet = vetService.save( vet );
 		}
 
@@ -105,7 +133,6 @@ public class DataLoader  implements CommandLineRunner {
 		}
 		lb.getPets().add( petDog );
 		ownerService.save( lb );
-
 	}
 
 }
