@@ -1,12 +1,20 @@
 package com.joevmartin.spring.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-
+@Entity
+@Table(name = "visit")
 public class Visit extends BaseEntity {
 
+	@ManyToOne
+	@JoinColumn(name = "pet_id")
 	private Pet pet;
-	private LocalDate appointmentTime;
+
+	@Column(name = "date")
+	private LocalDate date;
+
+	@Column(name = "description")
 	private String description;
 
 
@@ -18,12 +26,12 @@ public class Visit extends BaseEntity {
 		this.pet = pet;
 	}
 
-	public LocalDate getAppointmentTime() {
-		return appointmentTime;
+	public LocalDate getDate() {
+		return date;
 	}
 
-	public void setAppointmentTime( LocalDate appointmentTime ) {
-		this.appointmentTime = appointmentTime;
+	public void setDate( LocalDate appointmentTime ) {
+		this.date = appointmentTime;
 	}
 
 	public String getDescription() {
