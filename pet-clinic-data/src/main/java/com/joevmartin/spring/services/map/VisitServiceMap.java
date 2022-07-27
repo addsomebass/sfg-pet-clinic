@@ -4,9 +4,11 @@ import com.joevmartin.spring.model.Pet;
 import com.joevmartin.spring.model.Visit;
 import com.joevmartin.spring.repositories.PetRepository;
 import com.joevmartin.spring.services.VisitService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile( {"default", "map"} )
 public class VisitServiceMap extends BaseEntityServiceMap<Visit> implements VisitService {
 
 	private final PetRepository petRepository;

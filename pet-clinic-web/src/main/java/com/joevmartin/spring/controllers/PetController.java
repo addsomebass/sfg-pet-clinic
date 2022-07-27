@@ -1,6 +1,6 @@
 package com.joevmartin.spring.controllers;
 
-import com.joevmartin.spring.services.map.PetServiceMap;
+import com.joevmartin.spring.services.PetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/pets")
 public class PetController {
 
-	private final PetServiceMap petServiceMap;
+	private final PetService petService;
 
-	public PetController( PetServiceMap petServiceMap ) {
-		this.petServiceMap = petServiceMap;
+	public PetController( PetService petServiceMap ) {
+		this.petService = petServiceMap;
 	}
 
 	@RequestMapping({"/", "", "/index", "/index.html"})
 	public String listPets( Model model ) {
 
-		model.addAttribute( "pets", petServiceMap.findAll() );
+		model.addAttribute( "pets", petService.findAll() );
 
 		return "pets/index";
 

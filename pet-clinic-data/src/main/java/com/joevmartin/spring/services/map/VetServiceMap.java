@@ -4,9 +4,11 @@ import com.joevmartin.spring.model.Specialty;
 import com.joevmartin.spring.model.Vet;
 import com.joevmartin.spring.services.SpecialtyService;
 import com.joevmartin.spring.services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile( {"default", "map"} )
 public class VetServiceMap extends PersonServiceMap<Vet> implements VetService {
 
 	private SpecialtyService specialtyService;
