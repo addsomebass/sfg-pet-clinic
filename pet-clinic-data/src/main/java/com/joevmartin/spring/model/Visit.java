@@ -1,12 +1,22 @@
 package com.joevmartin.spring.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString(callSuper = true)
+@EqualsAndHashCode( callSuper = true )
 @Entity
 @Table(name = "visit")
 public class Visit extends BaseEntity {
 
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@ManyToOne
 	@JoinColumn(name = "pet_id")
 	private Pet pet;
@@ -18,27 +28,4 @@ public class Visit extends BaseEntity {
 	private String description;
 
 
-	public Pet getPet() {
-		return pet;
-	}
-
-	public void setPet( Pet pet ) {
-		this.pet = pet;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate( LocalDate appointmentTime ) {
-		this.date = appointmentTime;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription( String description ) {
-		this.description = description;
-	}
 }

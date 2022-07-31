@@ -39,8 +39,7 @@ public class DataLoader implements CommandLineRunner {
 	private void loadData() {
 		final Specialty radiology;
 		{
-			final Specialty temp = new Specialty();
-			temp.setDescription( "Radiology" );
+			final Specialty temp = Specialty.builder().description( "Radiology" ).build();
 			radiology = specialtyService.save( temp );
 		}
 
@@ -84,9 +83,14 @@ public class DataLoader implements CommandLineRunner {
 
 		final Owner lb;
 		{
-			Owner temp = new Owner();
-			temp.setFirstName( "Lora-Beth" );
-			temp.setLastName( "Allen" );
+			final Owner temp = Owner.builder()
+					.firstName( "Lora-Beth" )
+					.lastName( "Allen" )
+					.address( "4070 Tilly Mill Rd" )
+					.city( "Atlanta" )
+					.telephone( "1234567890" )
+					.build();
+
 			lb = ownerService.save( temp );
 		}
 
